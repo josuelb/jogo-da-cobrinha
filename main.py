@@ -25,6 +25,7 @@ ponts = 0
 python = person.Python(w, h, screen)
 apple = person.Apple(w, h, screen)
 
+
 while True:
     screen.fill((255, 255, 255))
     time.tick(15)
@@ -76,7 +77,6 @@ while True:
         apple.y_apple = randint(50, 430)
         ponts += 1
         python.len_initial += 1
-
 
     "Área de colisão com paredes"
     if python.x_py >= w:
