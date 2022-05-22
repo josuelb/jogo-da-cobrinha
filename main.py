@@ -16,8 +16,9 @@ fonts = pygame.font.SysFont('arial', 40, True, True)
 screen = pygame.display.set_mode((w, h))
 pygame.display.set_caption('Jogo da Cobrinha')
 
-x_apple = randint(40, 600)
-y_apple = randint(50, 430)
+
+x_contr = 20
+y_contr = 0
 
 ponts = 0
 
@@ -42,20 +43,40 @@ while True:
         print(event.type)
 
     if pygame.key.get_pressed()[K_a]:
-        python.x_py -= 20
+        if x_contr == 20:
+            pass
+        else:
+            x_contr = -20
+            y_contr = 0
     elif pygame.key.get_pressed()[K_d]:
-        python.x_py += 20
+        if x_contr == -20:
+            pass
+        else:
+            x_contr = 20
+            y_contr = 0
     elif pygame.key.get_pressed()[K_w]:
-        python.y_py -= 20
+        if y_contr == 20:
+            pass
+        else:
+            x_contr = 0
+            y_contr = -20
     elif pygame.key.get_pressed()[K_s]:
-        python.y_py += 20
+        if y_contr == -20:
+            pass
+        else:
+            x_contr = 0
+            y_contr = 20
+
+    python.x_py += x_contr
+    python.y_py += y_contr
 
     "Área de colisão"
     if python.python.colliderect(apple.apple):
         apple.x_apple = randint(40, 600)
         apple.y_apple = randint(50, 430)
         ponts += 1
-        python.h_py += 10
+        python.len_initial += 1
+
 
     "Área de colisão com paredes"
     if python.x_py >= w:
